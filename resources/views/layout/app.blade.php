@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
+     <link
+      href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css') }}"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container-scroller">
@@ -90,7 +94,7 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ url('/home') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -104,6 +108,15 @@
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Buku</span>
+            </a>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ url('user') }}">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">User</span>
             </a>
           </li>
           
@@ -343,9 +356,10 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+     <script src="{{ asset('assets/DataTables/datatables.min.js') }}"></script>
     <!-- End custom js for this page -->
     <script type="text/javascript">
-      // $("#data-tabel").DataTable();
+      $("#data-tabel").DataTable();
 
 
       $(document).on('click', '.hapus_btn', function(){

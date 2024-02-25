@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Feb 2024 pada 09.31
+-- Waktu pembuatan: 25 Feb 2024 pada 05.40
 -- Versi server: 10.4.16-MariaDB
 -- Versi PHP: 7.4.12
 
@@ -34,6 +34,13 @@ CREATE TABLE `buku` (
   `Penerbit` varchar(255) DEFAULT NULL,
   `TahunTerbit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `buku`
+--
+
+INSERT INTO `buku` (`BukuID`, `Judul`, `Penulis`, `Penerbit`, `TahunTerbit`) VALUES
+(2, 'Bumi Manusia', 'Zakir Naik', 'Air Langga', 2024);
 
 -- --------------------------------------------------------
 
@@ -110,9 +117,18 @@ CREATE TABLE `user` (
   `Username` varchar(255) DEFAULT NULL,
   `Password` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
-  `Namalengkap` varchar(255) DEFAULT NULL,
-  `Alamat` text DEFAULT NULL
+  `NamaLengkap` varchar(255) DEFAULT NULL,
+  `Alamat` text DEFAULT NULL,
+  `Level` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`UserID`, `Username`, `Password`, `Email`, `NamaLengkap`, `Alamat`, `Level`) VALUES
+(1, 'abidin', '$2y$10$fVx6moU3sGK8w8DpyQYZEOm02hg9907Th9mF6XrJrT21h2Ujg2KyK', 'zaenalote2017@gmail.com', 'Rohmat Zaenal Abidin', 'Desa Bitingan, Kec Sale, Kab Rembang', 'Petugas'),
+(2, 'admin', '$2y$10$H0db67tRUfI8Jt6BPSRVau6iypa0y5nygrzmZrr7dDUaDDwwrCBaa', 'email', 'nama', 'alamat', 'Administrator');
 
 --
 -- Indexes for dumped tables
@@ -176,7 +192,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `BukuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `BukuID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategoribuku_relasi`
@@ -212,7 +228,7 @@ ALTER TABLE `ulasanbuku`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
