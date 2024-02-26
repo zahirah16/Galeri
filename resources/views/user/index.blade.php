@@ -43,7 +43,7 @@
                         <td>
                           <a style="float: left;" href="{{ url('user').'/'.@$d->UserID.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
                           
-                          <form id="theForm_{{ @$d->UserID }}" style="float: left; margin-left: 4px" method="POST" action="{{ url('/user').'/'.$d->id }}">
+                          <form id="theForm_{{ @$d->UserID }}" style="float: left; margin-left: 4px" method="POST" action="{{ url('/user').'/'.$d->UserID }}">
                                   {{ csrf_field() }}
                                   {{ method_field('DELETE') }}
 

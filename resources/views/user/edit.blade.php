@@ -43,7 +43,7 @@
             <div class="form-group row">
               <label class="col-sm-3 text-end control-label col-form-label">Password</label>
               <div class="col-sm-9">
-                <input type="Password" class="form-control" name="password">
+                <input type="Password" class="form-control" name="Password">
               </div>
             </div>
 

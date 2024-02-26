@@ -32,7 +32,7 @@
                         {{-- <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li> --}}
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{ url('logout') }}">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -42,20 +42,28 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
+                            @php
+                                @$menu_aktif = Request::segment(1);
+                            @endphp
                             <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="{{ url('home') }}">
+                            <a class="nav-link {{ @$menu_aktif == 'home' ? 'active' : '' }}" href="{{ url('home') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Home
                             </a>
 
-                            <a class="nav-link" href="{{ url('buku') }}">
+                            <a class="nav-link {{ @$menu_aktif == 'buku' ? 'active' : '' }}" href="{{ url('buku') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                                 Buku
                             </a>
 
-                            <a class="nav-link" href="{{ url('user') }}">
+                            <a class="nav-link {{ @$menu_aktif == 'user' ? 'active' : '' }}" href="{{ url('user') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 User
+                            </a>
+
+                            <a class="nav-link {{ @$menu_aktif == 'peminjaman' ? 'active' : '' }}" href="{{ url('peminjaman') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-check-square"></i></div>
+                                Peminjaman
                             </a>
                             
                         </div>
@@ -66,9 +74,9 @@
                     </div> --}}
                 </nav>
             </div>
-            <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content" style="background-color: #B5C0D0">
                 <main>
-                    <div class="container-fluid px-4">
+                    <div class="container-fluid px-4 ">
                         <br>
                         @yield('konten')
                     </div>
@@ -87,12 +95,26 @@
                 </footer> --}}
             </div>
         </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="{{ asset('js/scripts.js') }}"></script>
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> --}}
+        {{-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> --}}
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
+
+        <script type="text/javascript">
+
+            $(document).on('click', '.hapus_btn', function(){
+                var id = $(this).attr('data-id');
+                var result = confirm("Anda yakin Akan Menghapus Data Ini?");
+                if (result) {
+                    // document.theForm.submit();
+                    $("#theForm_"+id).submit();
+                }  
+            });
+        </script>
     </body>
 </html>

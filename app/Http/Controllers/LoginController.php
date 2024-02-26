@@ -17,16 +17,16 @@ class LoginController extends Controller
 
    public function login_proses(Request $req)
    {
-      $username = $req->username;
-      $password = $req->password;
+      $username = $req->Username;
+      $password = $req->Password;
 
-      $user = User::where('username', $username)->first();
+      $user = User::where('Username', $username)->first();
       if($user){
-         if (Hash::check($password, $user->password)) {
-               $req->session()->put('user_id',$user->id);
-               $req->session()->put('level',$user->level);
+         if (Hash::check($password, $user->Password)) {
+               $req->session()->put('UserID',$user->UserID);
+               $req->session()->put('Level',$user->Level);
 
-               return redirect('/beranda');
+               return redirect('/home');
          }else{
              return redirect()->back()->with('error','Password yang anda masukkan salah!');
          }
@@ -37,8 +37,8 @@ class LoginController extends Controller
 
    public function logout()
    {
-   	Session::forget('user_id');
-   	Session::forget('role_id');
+   	Session::forget('UserID');
+   	Session::forget('Level');
    	return redirect('login');
    }
 

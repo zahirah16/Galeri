@@ -16,7 +16,7 @@ class CekStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session('user_id') == '') {
+        if (session('UserID') == '') {
             return redirect('login');
         }
         return $next($request);
