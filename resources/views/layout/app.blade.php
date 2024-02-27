@@ -81,7 +81,7 @@
                             </a>
 
                              <a class="nav-link {{ @$menu_aktif == 'laporan' ? 'active' : '' }}" href="{{ url('laporan') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-check-square"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                                 Laporan
                             </a>
                             
