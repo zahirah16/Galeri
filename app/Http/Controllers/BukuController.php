@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\Buku;
+Use App\Models\KategoriBuku;
+Use App\Models\KategoriBukuRelasi;
 use Illuminate\Support\Facades\File; 
+
+
 class BukuController extends Controller
 {
    protected $dir = 'buku';
@@ -17,24 +21,19 @@ class BukuController extends Controller
 
    public function create()
    {
-   	return view($this->dir.'.create');
+    $kategori_buku = KategoriBuku::all();
+   	return view($this->dir.'.create', compact('kategori_buku'));
    }
 
    public function store(Request $req)
    {
-      // // menyimpan data file yang diupload ke variabel $file
-      //  $file = $req->file('GambarBuku');
-       
-      //  if($file){
-      //       $nama_file = time()."_".$file->getClientOriginalName();
-      //       $tujuan_upload = 'gambar_Buku';
-      //       $file->move($tujuan_upload,$nama_file);
-      //  }
        
 
+      $KategoriID = $req->KategoriID;
 
-   	$simpan = new Buku;
-   	$simpan->Judul = $req->Judul;  
+
+     	$simpan = new Buku;
+     	$simpan->Judul = $req->Judul;  
       $simpan->Penulis = $req->Penulis;   
       $simpan->Penerbit = $req->Penerbit;
       $simpan->TahunTerbit = $req->TahunTerbit;
@@ -42,8 +41,20 @@ class BukuController extends Controller
       //    $simpan->GambarBuku = $nama_file;    
       // }
       
-   	$save = $simpan->save();
-   	if($save){
+   	  $save = $simpan->save();
+   	  
+
+
+      if($KategoriID){
+         foreach ($KategoriID as $k) {
+           $rel = new KategoriBukuRelasi;
+            $rel->BukuID = $simpan->BukuID;  
+            $rel->KategoriID = $k;
+            $rel->save();
+         }
+      }    
+
+      if($save){
          return redirect()->to($this->dir.'')->with('message','Data berhasil ditambahkan');
    		// return redirect()->to('mobil');
    	}else {
@@ -55,21 +66,19 @@ class BukuController extends Controller
    public function edit($id)
    {
    	$data = Buku::find($id);
-   	return view($this->dir.'.edit', compact('data'));
+    $kategori_buku = KategoriBuku::all();
+    $data_kategori = KategoriBukuRelasi::where('BukuID', $id)->get();
+    $data_kategorinya = [];
+    foreach ($data_kategori as $dk) {
+      $data_kategorinya[] = $dk->KategoriID;
+    }
+   	return view($this->dir.'.edit', compact('data', 'kategori_buku', 'data_kategorinya'));
    }
 
     public function update(Request $req, $id)
    {
-      // menyimpan data file yang diupload ke variabel $file
-       // $file = $req->file('GambarBuku');
-       // if($file){
-       //   $nama_file = time()."_".$file->getClientOriginalName();
-       
-       //               // isi dengan nama folder tempat kemana file diupload
-       //   $tujuan_upload = 'gambar_Buku';
-       //   $file->move($tujuan_upload,$nama_file);  
-       // }
-       
+      $KategoriID = $req->KategoriID;   
+
 
       $simpan = Buku::find($id);
       $simpan->Judul = $req->Judul;  
@@ -80,6 +89,18 @@ class BukuController extends Controller
       //    $simpan->GambarBuku = $nama_file;    
       // }
       $save = $simpan->save();
+
+      KategoriBukuRelasi::where('BukuID', $id)->delete();
+      
+      if($KategoriID){
+         foreach ($KategoriID as $k) {
+           $rel = new KategoriBukuRelasi;
+            $rel->BukuID = $simpan->BukuID;  
+            $rel->KategoriID = $k;
+            $rel->save();
+         }
+      }
+
       if($save){
          return redirect()->to($this->dir.'')->with('message','Data berhasil dirubah');
          // return redirect()->to('mobil');

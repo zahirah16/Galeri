@@ -36,6 +36,21 @@
                 <input type="number" class="form-control" name="TahunTerbit" required="required">
               </div>
             </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 text-end control-label col-form-label">Kategori </label>
+              <div class="col-sm-9">
+                @if (@$kategori_buku!=null)
+                  @foreach ($kategori_buku as $k)
+                    <div class="form-check mb-1">
+                        <input name="KategoriID[]" class="form-check-input" id="{{ @$k->NamaKategori }}" type="checkbox" value="{{ @$k->KategoriID }}">
+
+                        <label class="form-check-label" for="{{ @$k->NamaKategori }}">{{ @$k->NamaKategori }}</label>
+                    </div>
+                  @endforeach
+                @endif
+              </div>
+            </div>
             
            {{--  <div class="form-group row">
               <label class="col-sm-3 text-end control-label col-form-label">Gambar buku</label>

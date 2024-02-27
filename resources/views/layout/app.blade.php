@@ -10,6 +10,15 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <style type="text/css">
+            .table td {
+                font-size: 13px;
+            }
+
+            .table th {
+                font-size: 14px;
+            }
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -56,6 +65,11 @@
                                 Buku
                             </a>
 
+                            <a class="nav-link {{ @$menu_aktif == 'kategori_buku' ? 'active' : '' }}" href="{{ url('kategori_buku') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
+                                Kategori Buku
+                            </a>
+
                             <a class="nav-link {{ @$menu_aktif == 'user' ? 'active' : '' }}" href="{{ url('user') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 User
@@ -64,6 +78,11 @@
                             <a class="nav-link {{ @$menu_aktif == 'peminjaman' ? 'active' : '' }}" href="{{ url('peminjaman') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-check-square"></i></div>
                                 Peminjaman
+                            </a>
+
+                             <a class="nav-link {{ @$menu_aktif == 'laporan' ? 'active' : '' }}" href="{{ url('laporan') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-check-square"></i></div>
+                                Laporan
                             </a>
                             
                         </div>

@@ -14,18 +14,14 @@
       @endif
         <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Data Buku</h5>
-          <a href="{{ url('buku/create') }}" class="btn btn-primary">Tambah</a>
+          <h5 class="card-title">Data Kategori Buku</h5>
+          <a href="{{ url('kategori_buku/create') }}" class="btn btn-primary">Tambah</a>
           <div class="table-responsive">
               <table class="table table-sniped" id="data-tabel">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Judul</th>
-                    <th>Penulis</th>
-                    <th>Penerbit</th>
-                    <th>Tahun Terbit</th>
-                    <th>Kategori</th>
+                    <th>Nama Kategori</th>
                     <th>Opsi</th>
                   </tr>
                 </thead>
@@ -37,20 +33,21 @@
                     @foreach ($data as $d)
                       <tr>
                         <td>{{ @$no++; }}</td>
-                        <td>{{ @$d->Judul; }}</td>
-                        <td>{{ @$d->Penulis; }}</td>
-                        <td>{{ @$d->Penerbit; }}</td>
-                        <td>{{ @$d->TahunTerbit; }}</td>
-                        <td>{{ kategori_buku(@$d->BukuID); }}</td>
+                        <td>{{ @$d->NamaKategori; }}</td>
+                        {{-- <td>
+                          @if ($d->Gambarkategori_buku)
+                            <img width="100" src="{{ asset('gambar_kategori_buku').'/'.@$d->Gambarkategori_buku }}">
+                          @endif
+                        </td> --}}
                         <td>
-                          <a style="float: left;" href="{{ url('buku').'/'.@$d->BukuID.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
+                          <a style="float: left;" href="{{ url('kategori_buku').'/'.@$d->KategoriID.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
 
-                          <form id="theForm_{{ @$d->BukuID }}" style="float: left; margin-left: 4px" method="POST" action="{{ url('/buku').'/'.$d->BukuID }}">
+                          <form id="theForm_{{ @$d->KategoriID }}" style="float: left; margin-left: 4px" method="POST" action="{{ url('/kategori_buku').'/'.$d->KategoriID }}">
                                   {{ csrf_field() }}
                                   {{ method_field('DELETE') }}
 
                                   <div class="form-group">
-                                      <input type="button" data-id="{{ @$d->BukuID }}" class="btn btn-danger btn-sm hapus_btn" value="Hapus">
+                                      <input type="button" data-id="{{ @$d->KategoriID }}" class="btn btn-danger btn-sm hapus_btn" value="Hapus">
                                   </div>
                               </form>
                         </td>

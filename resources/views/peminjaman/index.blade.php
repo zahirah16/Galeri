@@ -37,10 +37,10 @@
                     @foreach ($data as $d)
                       <tr>
                         <td>{{ @$no++; }}</td>
-                        <td>{{ @$d->buku->Judul; }}</td>
                         <td>{{ @$d->user->NamaLengkap; }}</td>
-                        <td>{{ @$d->TanggalPeminjaman; }}</td>
-                        <td>{{ @$d->TanggalPengembalian; }}</td>
+                        <td>{{ @$d->buku->Judul; }}</td>
+                        <td>{{ tgl_indo(@$d->TanggalPeminjaman); }}</td>
+                        <td>{{ tgl_indo(@$d->TanggalPengembalian); }}</td>
                         <td>{{ @$d->StatusPeminjaman; }}</td>
                         {{-- <td>
                           @if ($d->Gambarpeminjaman)

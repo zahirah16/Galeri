@@ -5,6 +5,9 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\LaporanController;
+
+use App\Http\Controllers\KategoriBukuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +36,10 @@ Route::resource('buku', BukuController::class);
 Route::resource('user', UserController::class);
 
 Route::resource('peminjaman', PeminjamanController::class);
+
+Route::resource('laporan', LaporanController::class);
+Route::get('laporan_pdf', [LaporanController::class, 'pdf']);
+
+Route::resource('kategori_buku', KategoriBukuController::class);
+
 });
