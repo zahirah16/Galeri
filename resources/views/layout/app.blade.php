@@ -7,9 +7,8 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Perpustakaan</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/fa.js') }}" crossorigin="anonymous"></script>
         <style type="text/css">
             .table td {
                 font-size: 13px;
@@ -36,7 +35,7 @@
             <!-- Navbar-->
             <ul class="navbar-nav d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{ user()->NamaLengkap.' ('.user()->Level.')' }} </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
@@ -63,6 +62,11 @@
                             <a class="nav-link {{ @$menu_aktif == 'buku' ? 'active' : '' }}" href="{{ url('buku') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                                 Buku
+                            </a>
+
+                            <a class="nav-link {{ @$menu_aktif == 'koleksi_pribadi' ? 'active' : '' }}" href="{{ url('koleksi_pribadi') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-heart"></i></div>
+                                Koleksi Pribadi
                             </a>
 
                             <a class="nav-link {{ @$menu_aktif == 'kategori_buku' ? 'active' : '' }}" href="{{ url('kategori_buku') }}">
@@ -94,7 +98,7 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content" style="background-color: #B5C0D0">
-                <main>
+                <main style="background-image: url({{ url('bg.jpg')  }});height:100%;background-position: center; background-repeat: no-repeat;  background-size: cover;">
                     <div class="container-fluid px-4 ">
                         <br>
                         @yield('konten')
@@ -114,17 +118,19 @@
                 </footer> --}}
             </div>
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/datatable.css') }}" />
+        <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> --}}
         {{-- <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script> --}}
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
+        
 
         <script type="text/javascript">
+            $("#data-tabel").DataTable();
 
             $(document).on('click', '.hapus_btn', function(){
                 var id = $(this).attr('data-id');

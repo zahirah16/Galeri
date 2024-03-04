@@ -32,7 +32,7 @@
                   @if ($buku!=null)
                   
                   @foreach ($buku as $b)
-                    <option value="{{ @$b->BukuID }}">{{ @$b->Judul }}</option>
+                    <option value="{{ @$b->BukuID }}">{{ @$b->Judul }} {{ rating(@$b->BukuID); }}</option>
                   @endforeach
                   @endif
                 </select>

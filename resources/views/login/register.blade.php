@@ -17,8 +17,10 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Perpustakaan</h3></div>
+                                <div class="card shadow-lg border-0 rounded-lg mt-1">
+                                    <div class="card-header"><h5 class="text-center font-weight-light my-1">Perpustakaan</h5>
+                                       <small>Register</small> 
+                                    </div>
                                     <div class="card-body">
                                         @if(session()->has('message'))
                                             <div class="alert alert-success">
@@ -30,24 +32,42 @@
                                               {{session()->get('error') }}
                                           </div>
                                         @endif
-                                        <form action="{{ url('login-proses') }}" method="post">
+                                        <form action="{{ url('register-proses') }}" method="post">
                                             {{ csrf_field() }}
-                                            <div class="form-floating mb-3">
-                                                <input name="Username" required="required" class="form-control" type="text" />
+                                            
+                                            <div class="form-group mb-1">
+                                                <label>Nama Lengkap</label>
+                                                <input name="NamaLengkap" required="required" class="form-control" type="text" />
+                                            </div>
+
+                                            <div class="form-group mb-1">
+                                                <label>Email</label>
+                                                <input name="Email" required="required" class="form-control" type="text" />
+                                            </div>
+
+                                            <div class="form-group mb-1">
+                                                <label>Alamat</label>
+                                                <input name="Alamat" required="required" class="form-control" type="text" />
+                                            </div>
+
+                                            <div class="form-group mb-1">
                                                 <label>Username</label>
+                                                <input name="Username" required="required" class="form-control" type="text" />
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" required="required" name="Password" placeholder="Password" />
+
+                                            <div class="form-group mb-1">
                                                 <label>Password</label>
+                                                <input name="Password" required="required" class="form-control" type="Password" />
                                             </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            
+                                            <div class="d-flex align-items-center justify-content-between mt-1 mb-0">
                                                 {{-- <a class="small" href="password.html">Forgot Password?</a> --}}
-                                                <button type="submit" class="btn btn-primary">Login</button>
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="{{ url('register') }}">Belum punya akun ? Daftar Disini!</a></div>
+                                    <div class="card-footer text-center py-2">
+                                        <div class="small"><a href="{{ url('login') }}">Sudah punya akun ? Login Disini!</a></div>
                                     </div>
                                 </div>
                             </div>
