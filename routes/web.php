@@ -29,6 +29,8 @@ Route::post('/register-proses/', [LoginController::class, 'register_proses']);
 
 Route::group(['middleware' => 'cekstatus'], function () {
 
+Route::resource('/', HomeController::class);
+
 Route::resource('home', HomeController::class);
 
 Route::get('buku/{id}/ulasan', [BukuController::class, 'ulasan']);

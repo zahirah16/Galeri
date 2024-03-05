@@ -10,7 +10,7 @@
           <div class="card-body">
             <h5 class="card-title">Edit Peminjaman</h5>
             <br>
-            <div class="form-group row">
+            {{-- <div class="form-group row">
               <label class="col-sm-5 text-end control-label col-form-label">User</label>
               <div class="col-sm-7">
                 <select class="form-control" name="UserID" required="required">
@@ -23,7 +23,7 @@
                 @endif
               </select>
               </div>
-            </div>
+            </div> --}}
 
             <div class="form-group row">
               <label class="col-sm-5 text-end control-label col-form-label">Buku</label>

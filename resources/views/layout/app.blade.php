@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="icon" type="image/x-icon" href="{{ asset('book.png') }}">
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -22,7 +23,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{ url('home') }}">Perpustakaan</a>
+            <a class="navbar-brand ps-3" href="{{ url('home') }}"> <img width="30px" src="{{ asset('book.png') }}"> Perpustakaan</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -58,15 +59,18 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Home
                             </a>
-
-                            <a class="nav-link {{ @$menu_aktif == 'buku' ? 'active' : '' }}" href="{{ url('buku') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                                Buku
-                            </a>
+                            
 
                             <a class="nav-link {{ @$menu_aktif == 'koleksi_pribadi' ? 'active' : '' }}" href="{{ url('koleksi_pribadi') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-heart"></i></div>
                                 Koleksi Pribadi
+                            </a>
+
+                            
+                            @if(session('Level') == 'Administrator' || session('Level') == 'Petugas')
+                            <a class="nav-link {{ @$menu_aktif == 'buku' ? 'active' : '' }}" href="{{ url('buku') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                Buku
                             </a>
 
                             <a class="nav-link {{ @$menu_aktif == 'kategori_buku' ? 'active' : '' }}" href="{{ url('kategori_buku') }}">
@@ -74,20 +78,26 @@
                                 Kategori Buku
                             </a>
 
-                            <a class="nav-link {{ @$menu_aktif == 'user' ? 'active' : '' }}" href="{{ url('user') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                                User
-                            </a>
 
+                            <a class="nav-link {{ @$menu_aktif == 'laporan' ? 'active' : '' }}" href="{{ url('laporan') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
+                                Laporan
+                            </a>
+                            @endif
+
+                            @if(session('Level') == 'Peminjam')
                             <a class="nav-link {{ @$menu_aktif == 'peminjaman' ? 'active' : '' }}" href="{{ url('peminjaman') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-check-square"></i></div>
                                 Peminjaman
                             </a>
+                            @endif
 
-                             <a class="nav-link {{ @$menu_aktif == 'laporan' ? 'active' : '' }}" href="{{ url('laporan') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
-                                Laporan
+                            @if(session('Level') == 'Administrator')
+                            <a class="nav-link {{ @$menu_aktif == 'user' ? 'active' : '' }}" href="{{ url('user') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                User
                             </a>
+                            @endif
                             
                         </div>
                     </div>

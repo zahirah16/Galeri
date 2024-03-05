@@ -38,7 +38,7 @@ class PeminjamanController extends Controller
 
 
    	$simpan = new Peminjaman;
-   	$simpan->UserID = $req->UserID;  
+   	$simpan->UserID = session('UserID');  
       $simpan->BukuID = $req->BukuID;   
       $simpan->TanggalPeminjaman = $req->TanggalPeminjaman;
       $simpan->TanggalPengembalian = $req->TanggalPengembalian;
@@ -79,7 +79,7 @@ class PeminjamanController extends Controller
        
 
       $simpan = Peminjaman::find($id);
-      $simpan->UserID = $req->UserID;  
+      $simpan->UserID = session('UserID');  
       $simpan->BukuID = $req->BukuID;   
       $simpan->TanggalPeminjaman = $req->TanggalPeminjaman;
       $simpan->TanggalPengembalian = $req->TanggalPengembalian;
