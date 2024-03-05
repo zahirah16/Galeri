@@ -19,7 +19,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-1">
-                                    <div class="card-header"><h5 class="text-center font-weight-light my-1">Perpustakaan</h5>
+                                    <div class="card-header"><h5 class="text-center font-weight-light my-1"><img width="30px" src="{{ asset('book.png') }}"> Perpustakaan</h5>
                                        <small>Register</small> 
                                     </div>
                                     <div class="card-body">

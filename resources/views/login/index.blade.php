@@ -19,7 +19,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Perpustakaan</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><img width="30px" src="{{ asset('book.png') }}"> Perpustakaan</h3></div>
                                     <div class="card-body">
                                         @if(session()->has('message'))
                                             <div class="alert alert-success">

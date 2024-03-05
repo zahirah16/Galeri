@@ -13,7 +13,7 @@ class PeminjamanController extends Controller
 
    public function index()
    {
-   	$data = Peminjaman::all();
+   	$data = Peminjaman::where('UserID', session('UserID'))->get();
    	return view($this->dir.'.index', compact('data'));
    }
 
