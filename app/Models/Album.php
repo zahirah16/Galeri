@@ -1,9 +1,8 @@
 <?php
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
-class Buku extends Model
+class Album extends Model
 {
-    protected $table = "buku";
-	protected $primaryKey = 'BukuID';
+    protected $table = "album";
     public $timestamps = false;
 }

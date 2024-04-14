@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="icon" type="image/x-icon" href="{{ asset('book.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('galeri.png') }}">
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Perpustakaan</title>
+        <title>Galeri</title>
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <script src="{{ asset('js/fa.js') }}" crossorigin="anonymous"></script>
         <style type="text/css">
@@ -23,7 +23,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{ url('home') }}"> <img width="30px" src="{{ asset('book.png') }}"> Perpustakaan</a>
+            <a class="navbar-brand ps-3" href="{{ url('home') }}"> <img width="30px" src="{{ asset('galeri.png') }}"> Galeri</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -36,7 +36,7 @@
             <!-- Navbar-->
             <ul class="navbar-nav d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{ user()->NamaLengkap.' ('.user()->Level.')' }} </a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> {{ @user()->nama_lengkap }} </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         {{-- <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
@@ -57,23 +57,27 @@
                             <div class="sb-sidenav-menu-heading">Menu</div>
                             <a class="nav-link {{ @$menu_aktif == 'home' ? 'active' : '' }}" href="{{ url('home') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Home
+                                Beranda
                             </a>
                             
 
-                            <a class="nav-link {{ @$menu_aktif == 'koleksi_pribadi' ? 'active' : '' }}" href="{{ url('koleksi_pribadi') }}">
+                            {{-- <a class="nav-link {{ @$menu_aktif == 'koleksi_pribadi' ? 'active' : '' }}" href="{{ url('koleksi_pribadi') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-heart"></i></div>
                                 Koleksi Pribadi
-                            </a>
+                            </a> --}}
 
                             
-                            @if(session('Level') == 'Administrator' || session('Level') == 'Petugas')
-                            <a class="nav-link {{ @$menu_aktif == 'buku' ? 'active' : '' }}" href="{{ url('buku') }}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                                Buku
+                            <a class="nav-link {{ @$menu_aktif == 'foto' ? 'active' : '' }}" href="{{ url('foto') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-file-image"></i></div>
+                                Foto Saya
                             </a>
 
-                            <a class="nav-link {{ @$menu_aktif == 'kategori_buku' ? 'active' : '' }}" href="{{ url('kategori_buku') }}">
+                            <a class="nav-link {{ @$menu_aktif == 'album' ? 'active' : '' }}" href="{{ url('album') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
+                                Album Saya
+                            </a>
+
+                            {{-- <a class="nav-link {{ @$menu_aktif == 'kategori_buku' ? 'active' : '' }}" href="{{ url('kategori_buku') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
                                 Kategori Buku
                             </a>
@@ -83,21 +87,16 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                                 Laporan
                             </a>
-                            @endif
-
-                            @if(session('Level') == 'Peminjam')
+                            
                             <a class="nav-link {{ @$menu_aktif == 'peminjaman' ? 'active' : '' }}" href="{{ url('peminjaman') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-check-square"></i></div>
                                 Peminjaman
                             </a>
-                            @endif
-
-                            @if(session('Level') == 'Administrator')
+                            
                             <a class="nav-link {{ @$menu_aktif == 'user' ? 'active' : '' }}" href="{{ url('user') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 User
-                            </a>
-                            @endif
+                            </a> --}}
                             
                         </div>
                     </div>
@@ -107,8 +106,8 @@
                     </div> --}}
                 </nav>
             </div>
-            <div id="layoutSidenav_content" style="background-color: #B5C0D0">
-                <main style="background-image: url({{ url('bg.jpg')  }});height:100%;background-position: center; background-repeat: no-repeat;  background-size: cover;">
+            <div id="layoutSidenav_content" style="background-color: #f1f1f1">
+                <main>
                     <div class="container-fluid px-4 ">
                         <br>
                         @yield('konten')

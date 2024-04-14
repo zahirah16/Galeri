@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="icon" type="image/x-icon" href="{{ asset('book.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('galeri.png') }}">
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Perpustakaan</title>
+        <title>Galeri</title>
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <script src="{{ asset('js/fa.js') }}" crossorigin="anonymous"></script>
     </head>
@@ -18,8 +18,8 @@
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-1">
-                                    <div class="card-header"><h5 class="text-center font-weight-light my-1"><img width="30px" src="{{ asset('book.png') }}"> Perpustakaan</h5>
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h5 class="text-center font-weight-light my-1"><img width="30px" src="{{ asset('galeri.png') }}"> Galeri</h5>
                                        <small>Register</small> 
                                     </div>
                                     <div class="card-body">
@@ -38,27 +38,27 @@
                                             
                                             <div class="form-group mb-1">
                                                 <label>Nama Lengkap</label>
-                                                <input name="NamaLengkap" required="required" class="form-control" type="text" />
+                                                <input name="nama_lengkap" required="required" class="form-control" type="text" />
                                             </div>
 
                                             <div class="form-group mb-1">
                                                 <label>Email</label>
-                                                <input name="Email" required="required" class="form-control" type="text" />
+                                                <input name="email" required="required" class="form-control" type="text" />
                                             </div>
 
                                             <div class="form-group mb-1">
                                                 <label>Alamat</label>
-                                                <input name="Alamat" required="required" class="form-control" type="text" />
+                                                <input name="alamat" required="required" class="form-control" type="text" />
                                             </div>
 
                                             <div class="form-group mb-1">
                                                 <label>Username</label>
-                                                <input name="Username" required="required" class="form-control" type="text" />
+                                                <input name="username" required="required" class="form-control" type="text" />
                                             </div>
 
                                             <div class="form-group mb-1">
                                                 <label>Password</label>
-                                                <input name="Password" required="required" class="form-control" type="Password" />
+                                                <input name="password" required="required" class="form-control" type="Password" />
                                             </div>
                                             
                                             <div class="d-flex align-items-center justify-content-between mt-1 mb-0">

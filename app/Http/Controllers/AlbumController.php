@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-Use App\Models\KategoriBuku;
+Use App\Models\Album;
 use Illuminate\Support\Facades\File; 
-class KategoriBukuController extends Controller
+class AlbumController extends Controller
 {
-   protected $dir = 'kategori_buku';
+   protected $dir = 'album';
 
    public function index()
    {
-   	$data = KategoriBuku::all();
+   	$data = Album::where('user_id', session('UserID'))->get();
    	return view($this->dir.'.index', compact('data'));
    }
 
@@ -23,22 +23,20 @@ class KategoriBukuController extends Controller
    public function store(Request $req)
    {
       // // menyimpan data file yang diupload ke variabel $file
-      //  $file = $req->file('GambarKategoriBuku');
+      //  $file = $req->file('GambarAlbum');
        
       //  if($file){
       //       $nama_file = time()."_".$file->getClientOriginalName();
-      //       $tujuan_upload = 'gambar_KategoriBuku';
+      //       $tujuan_upload = 'gambar_Album';
       //       $file->move($tujuan_upload,$nama_file);
       //  }
        
 
 
-   	$simpan = new KategoriBuku;
-   	$simpan->NamaKategori = $req->NamaKategori; 
-      // if($file){
-      //    $simpan->GambarKategoriBuku = $nama_file;    
-      // }
-      
+   	$simpan = new Album;
+   	$simpan->nama_album = $req->nama_album;
+      $simpan->deskripsi = $req->deskripsi;
+      $simpan->user_id = session('UserID');
    	$save = $simpan->save();
    	if($save){
          return redirect()->to($this->dir.'')->with('message','Data berhasil ditambahkan');
@@ -51,27 +49,28 @@ class KategoriBukuController extends Controller
 
    public function edit($id)
    {
-   	$data = KategoriBuku::find($id);
+   	$data = Album::find($id);
    	return view($this->dir.'.edit', compact('data'));
    }
 
     public function update(Request $req, $id)
    {
       // menyimpan data file yang diupload ke variabel $file
-       // $file = $req->file('GambarKategoriBuku');
+       // $file = $req->file('GambarAlbum');
        // if($file){
        //   $nama_file = time()."_".$file->getClientOriginalName();
        
        //               // isi dengan nama folder tempat kemana file diupload
-       //   $tujuan_upload = 'gambar_KategoriBuku';
+       //   $tujuan_upload = 'gambar_Album';
        //   $file->move($tujuan_upload,$nama_file);  
        // }
        
 
-      $simpan = KategoriBuku::find($id);
-      $simpan->NamaKategori = $req->NamaKategori;  
+      $simpan = Album::find($id);
+      $simpan->nama_album = $req->nama_album;
+      $simpan->deskripsi = $req->deskripsi;
       // if($file){
-      //    $simpan->GambarKategoriBuku = $nama_file;    
+      //    $simpan->GambarAlbum = $nama_file;    
       // }
       $save = $simpan->save();
       if($save){
@@ -85,10 +84,10 @@ class KategoriBukuController extends Controller
 
    public function destroy($id)
    {
-      $data = KategoriBuku::find($id);
-      // return $data->GambarKategoriBuku;
-      if($data->GambarKategoriBuku){
-         $image_path = public_path('gambar_KategoriBuku').'/'.$data->GambarKategoriBuku;  // 
+      $data = Album::find($id);
+      // return $data->GambarAlbum;
+      if($data->GambarAlbum){
+         $image_path = public_path('gambar_Album').'/'.$data->GambarAlbum;  // 
          if(File::exists($image_path)) {
              File::delete($image_path);
          }   

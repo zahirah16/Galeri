@@ -9,6 +9,15 @@ function tgl_indo($tgl){
 	
 }
 
+function tgl_indo_lengkap($tgl){
+	if($tgl!=''){
+		return date('d-m-Y H:i', strtotime($tgl));	
+	}else {
+		return '-';
+	}
+	
+}
+
 function kategori_buku($BukuID)
 {
 	$data = App\Models\KategoriBukuRelasi::where('BukuID', $BukuID)->get();

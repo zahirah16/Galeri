@@ -14,14 +14,18 @@
       @endif
         <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Data Kategori Buku</h5>
-          <a href="{{ url('kategori_buku/create') }}" class="btn btn-primary">Tambah</a>
+          <h5 class="card-title">Data Foto / Galeri</h5>
+          <a href="{{ url('foto/create') }}" class="btn btn-primary">Tambah</a>
           <div class="table-responsive">
               <table class="table table-sniped" id="data-tabel">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Kategori</th>
+                    <th>Foto</th>
+                    <th>Judul Foto</th>
+                    <th>Deskripsi</th>
+                    <th>Tanggal Unggah</th>
+                    <th>Album</th>
                     <th>Opsi</th>
                   </tr>
                 </thead>
@@ -33,21 +37,26 @@
                     @foreach ($data as $d)
                       <tr>
                         <td>{{ @$no++; }}</td>
-                        <td>{{ @$d->NamaKategori; }}</td>
-                        {{-- <td>
-                          @if ($d->Gambarkategori_buku)
-                            <img width="100" src="{{ asset('gambar_kategori_buku').'/'.@$d->Gambarkategori_buku }}">
-                          @endif
-                        </td> --}}
                         <td>
-                          <a style="float: left;" href="{{ url('kategori_buku').'/'.@$d->KategoriID.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
+                          @if (@$d->lokasi_file!=null)
+                              <img width="100px" src="{{ url($d->lokasi_file) }}" alt="">
+                          @endif
+                        </td>
+                        <td>{{ @$d->judul_foto; }}</td>
+                        <td>{{ @$d->deskripsi_foto; }}</td>
+                        <td>{{ tgl_indo_lengkap(@$d->tanggal_unggah); }}</td>
+                        <td>{{ @$d->album->nama_album }}</td>
+                        <td>
+                          <a style="float: left; " href="{{ url('foto').'/'.@$d->id.'/detail' }}" class="btn btn-info btn-sm">Detail</a>
 
-                          <form id="theForm_{{ @$d->KategoriID }}" style="float: left; margin-left: 4px" method="POST" action="{{ url('/kategori_buku').'/'.$d->KategoriID }}">
+                          <a style="float: left; margin-left: 4px" href="{{ url('foto').'/'.@$d->id.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
+
+                          <form id="theForm_{{ @$d->id }}" style="float: left; margin-left: 4px" method="POST" action="{{ url('/foto').'/'.$d->id }}">
                                   {{ csrf_field() }}
                                   {{ method_field('DELETE') }}
 
                                   <div class="form-group">
-                                      <input type="button" data-id="{{ @$d->KategoriID }}" class="btn btn-danger btn-sm hapus_btn" value="Hapus">
+                                      <input type="button" data-id="{{ @$d->id }}" class="btn btn-danger btn-sm hapus_btn" value="Hapus">
                                   </div>
                               </form>
                         </td>

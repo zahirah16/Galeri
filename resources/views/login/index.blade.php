@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="icon" type="image/x-icon" href="{{ asset('book.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('galeri.png') }}">
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Perpustakaan</title>
+        <title>Galeri</title>
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <script src="{{ asset('js/fa.js') }}" crossorigin="anonymous"></script>
     </head>
@@ -19,7 +19,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><img width="30px" src="{{ asset('book.png') }}"> Perpustakaan</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><img width="30px" src="{{ asset('galeri.png') }}"> Galeri</h3></div>
                                     <div class="card-body">
                                         @if(session()->has('message'))
                                             <div class="alert alert-success">
@@ -34,11 +34,11 @@
                                         <form action="{{ url('login-proses') }}" method="post">
                                             {{ csrf_field() }}
                                             <div class="form-floating mb-3">
-                                                <input name="Username" required="required" class="form-control" type="text" />
+                                                <input name="username" required="required" class="form-control" type="text" />
                                                 <label>Username</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" required="required" name="Password" placeholder="Password" />
+                                                <input class="form-control" id="inputPassword" type="password" required="required" name="password" placeholder="Password" />
                                                 <label>Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">

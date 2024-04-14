@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BukuController;
+use App\Http\Controllers\FotoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\KategoriBukuController;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\KoleksiPribadiController;
 
 /*
@@ -33,11 +33,11 @@ Route::resource('/', HomeController::class);
 
 Route::resource('home', HomeController::class);
 
-Route::get('buku/{id}/ulasan', [BukuController::class, 'ulasan']);
-Route::post('buku/{id}/ulasan_post', [BukuController::class, 'ulasan_post']);
-Route::delete('ulasan/{id}/hapus_ulasan', [BukuController::class, 'hapus_ulasan']);
+Route::get('foto/{id}/detail', [FotoController::class, 'detail']);
+Route::post('foto/{id}/komentar_post', [FotoController::class, 'komentar_post']);
+Route::delete('komentar/{id}/hapus_komentar', [FotoController::class, 'hapus_komentar']);
 
-Route::resource('buku', BukuController::class);
+Route::resource('foto', FotoController::class);
 
 Route::resource('user', UserController::class);
 
@@ -46,7 +46,7 @@ Route::resource('peminjaman', PeminjamanController::class);
 Route::resource('laporan', LaporanController::class);
 Route::get('laporan_pdf', [LaporanController::class, 'pdf']);
 
-Route::resource('kategori_buku', KategoriBukuController::class);
+Route::resource('album', AlbumController::class);
 
 Route::resource('koleksi_pribadi', KoleksiPribadiController::class);
 

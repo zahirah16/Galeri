@@ -17,14 +17,13 @@ class LoginController extends Controller
 
    public function login_proses(Request $req)
    {
-      $username = $req->Username;
-      $password = $req->Password;
+      $username = $req->username;
+      $password = $req->password;
 
-      $user = User::where('Username', $username)->first();
+      $user = User::where('username', $username)->first();
       if($user){
-         if (Hash::check($password, $user->Password)) {
-               $req->session()->put('UserID',$user->UserID);
-               $req->session()->put('Level',$user->Level);
+         if (Hash::check($password, $user->password)) {
+               $req->session()->put('UserID',$user->id);
 
                return redirect('/home');
          }else{
@@ -50,10 +49,10 @@ class LoginController extends Controller
     public function register_proses(Request $req)
    {  
 
-      $username = $req->Username;
-      $password = $req->Password;
+      $username = $req->username;
+      $password = $req->password;
 
-      $user = User::where('Username', $username)->first();
+      $user = User::where('username', $username)->first();
       if($user){
          return redirect()->back()->with('error','Username sudah digunakan!');
          // if (Hash::check($password, $user->Password)) {
@@ -66,18 +65,16 @@ class LoginController extends Controller
          // }
       }else {
          $new = new User;
-         $new->NamaLengkap = $req->NamaLengkap;
-         $new->Email = $req->Email;
-         $new->Alamat = $req->Alamat;
-         $new->Username = $req->Username;
-         $new->Level = 'Peminjam';
-         $new->Password = Hash::make($req->Password);
+         $new->nama_lengkap = $req->nama_lengkap;
+         $new->email = $req->email;
+         $new->alamat = $req->alamat;
+         $new->username = $req->username;
+         $new->password = Hash::make($req->password);
 
          $save = $new->save();
 
          if($save){
-            $req->session()->put('UserID',$new->UserID);
-            $req->session()->put('Level',$new->Level);
+            $req->session()->put('UserID',$new->id);
             return redirect('/home');
          }else{
              return redirect()->back()->with('error','Terjadi Kesalahan!');
