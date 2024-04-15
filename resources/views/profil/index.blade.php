@@ -13,7 +13,7 @@
                 {{session()->get('error') }}
             </div>
         @endif
-        
+
       <div class="card">
         
         
@@ -23,40 +23,40 @@
           <div class="card-body">
             <h5 class="card-title">Profil Anda</h5>
             <br>
-            <div class="form-group row">
+            <div class="form-group row mt-2">
               <label class="col-sm-3 text-end control-label col-form-label">Nama lengkap</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" name="nama_lengkap" required="required" value="{{ @$data->nama_lengkap }}">
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mt-2">
               <label class="col-sm-3 text-end control-label col-form-label">Email</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" name="email" required="required" value="{{ @$data->email }}">
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mt-2">
               <label class="col-sm-3 text-end control-label col-form-label">Alamat</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" name="alamat" required="required" value="{{ @$data->alamat }}">
               </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mt-2">
               <label class="col-sm-3 text-end control-label col-form-label">Username</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" name="Username" required="required" value="{{ @$data->username }}">
+                <input type="text" class="form-control" name="username" required="required" value="{{ @$data->username }}">
               </div>
             </div>
 
             
 
-            <div class="form-group row">
+            <div class="form-group row mt-2">
               <label class="col-sm-3 text-end control-label col-form-label">Password Baru</label>
               <div class="col-sm-9">
-                <input type="Password" class="form-control" name="Password">
+                <input type="Password" class="form-control" name="password">
               </div>
             </div>
             
