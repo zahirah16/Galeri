@@ -18,19 +18,6 @@ function tgl_indo_lengkap($tgl){
 	
 }
 
-function kategori_buku($BukuID)
-{
-	$data = App\Models\KategoriBukuRelasi::where('BukuID', $BukuID)->get();
-	if($data){
-		$a = '';
-		foreach ($data as $k) {
-			$a .= $k->kategori->NamaKategori.', '; 
-		}
-
-		return $a;
-	}
-}
-
 function user()
 {
 	$data = App\Models\User::find(session('UserID'));

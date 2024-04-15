@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 Use App\Models\User;
-use Session;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
