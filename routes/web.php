@@ -33,9 +33,10 @@ Route::resource('/', HomeController::class);
 
 Route::resource('home', HomeController::class);
 
-Route::get('foto/{id}/detail', [FotoController::class, 'detail']);
+Route::get('foto_detail/{id}/detail', [FotoController::class, 'detail']);
 Route::post('foto/{id}/komentar_post', [FotoController::class, 'komentar_post']);
 Route::delete('komentar/{id}/hapus_komentar', [FotoController::class, 'hapus_komentar']);
+Route::post('foto/{id}/like_post', [FotoController::class, 'like_post']);
 
 Route::resource('foto', FotoController::class);
 

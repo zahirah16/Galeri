@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
 	function index(Request $req)
 	{
-		$semua_foto = Foto::with('komentar')->get();
+		$semua_foto = Foto::with('komentar')->with('like')->get();
 		
 		return view('home.index', compact('semua_foto'));	
 	}

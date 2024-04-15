@@ -19,4 +19,9 @@ class Foto extends Model
 	{
 	    return $this->belongsTo(User::class, 'user_id', 'id');
 	}
+
+	public function like()
+	{
+	    return $this->belongsTo(LikeFoto::class, 'id', 'foto_id');
+	}
 }

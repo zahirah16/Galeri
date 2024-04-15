@@ -47,7 +47,7 @@
                         <td>{{ tgl_indo_lengkap(@$d->tanggal_unggah); }}</td>
                         <td>{{ @$d->album->nama_album }}</td>
                         <td>
-                          <a style="float: left; " href="{{ url('foto').'/'.@$d->id.'/detail' }}" class="btn btn-info btn-sm">Detail</a>
+                          <a style="float: left; " href="{{ url('foto_detail').'/'.@$d->id.'/detail' }}" class="btn btn-info btn-sm">Detail</a>
 
                           <a style="float: left; margin-left: 4px" href="{{ url('foto').'/'.@$d->id.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
 

@@ -7,6 +7,7 @@ Use App\Models\Foto;
 Use App\Models\Album;
 use Illuminate\Support\Facades\File; 
 Use App\Models\KomentarFoto;
+Use App\Models\LikeFoto;
 
 class FotoController extends Controller
 {
@@ -129,7 +130,8 @@ class FotoController extends Controller
    {
      $data = Foto::find($id);
      $komentar = KomentarFoto::where('foto_id', $id)->get();
-     return view($this->dir.'.ulasan', compact('data', 'komentar'));
+     $sudah_like = LikeFoto::where('foto_id', $id)->where('user_id', session('UserID'))->first();
+     return view($this->dir.'.ulasan', compact('data', 'komentar', 'sudah_like'));
    }
 
    public function komentar_post(Request $req, $id)
@@ -139,6 +141,27 @@ class FotoController extends Controller
       $simpan->user_id = session('UserID');   
       $simpan->isi_komentar = $req->komentar;
       $save = $simpan->save();
+      
+      if($save){
+         return redirect()->back()->with('message','Data berhasil ditambahkan');
+      }else {
+            return redirect()->back()->with('error','Data gagal ditambahkan');
+      }
+   }
+
+   public function like_post(Request $req, $id)
+   {
+      $tipe = $req->tipe;
+      if($tipe==1){
+         $simpan = new LikeFoto;
+         $simpan->foto_id = $id;  
+         $simpan->user_id = session('UserID');
+         $save = $simpan->save();
+      }else {
+         $simpan = LikeFoto::where('user_id', session('UserID'))->where('foto_id', $id);
+         $save = $simpan->delete();
+      }
+      
       
       if($save){
          return redirect()->back()->with('message','Data berhasil ditambahkan');

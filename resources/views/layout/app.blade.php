@@ -18,6 +18,9 @@
             .table th {
                 font-size: 14px;
             }
+            .btn {
+                font-size: 11px;
+            }
         </style>
     </head>
     <body class="sb-nav-fixed">
@@ -106,7 +109,7 @@
                     </div> --}}
                 </nav>
             </div>
-            <div id="layoutSidenav_content" style="background-color: #f1f1f1">
+            <div id="layoutSidenav_content" style="background-color: #f1f1f1; font-size:11px;">
                 <main>
                     <div class="container-fluid px-4 ">
                         <br>

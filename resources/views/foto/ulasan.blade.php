@@ -7,14 +7,15 @@
         
           <div class="card-body">
             <center>
-                <h5>{{ @$data->judul_foto }}</h5>
+              <a style="margin-top: 4px" href="{{ url('/home') }}" class="btn btn-sm btn-warning"> <i class="fa fa-backward"></i> Kembali</a>  
+              <h5>{{ @$data->judul_foto }}</h5>
             </center>
             <img width="100%" src="{{ url(@$data->lokasi_file) }}" alt="">
             <center>
-              <b><i class="fa fa-heart"></i> : </b>
+              <b><i class="fa fa-heart"></i> : {{ jumlah_like(@$data->id) }}</b>
               <b style="margin-left: 10px"><i class="fa fa-comment"></i> : {{ @count(@$komentar) }}</b>
             </center>
-            <table width="" class="" cellpadding="2px">
+            <table style="font-size: 11px;" width="" class="" cellpadding="2px">
               <tr>
                 <th>User</th>
                 <td>:</td>
@@ -45,25 +46,44 @@
 
     <div class="col-md-5">
       <div class="card">
+        <form class="form-horizontal" action="{{ url('foto').'/'.@$data->id.'/like_post' }}" method="post" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <div class="card-body">
+            <div class="form-group row">
+              <div class="col-sm-5">
+                <b>Suka dengan foto ini ?</b>
+              </div>
+              <div class="col-sm-5">
+                @if ($sudah_like!=null)
+                  <i>Anda telah menyukai foto ini</i>
+                  <input type="hidden" value="2" name="tipe">
+                  <button class="btn btn-warning"> <i class="fa fa-heart"></i> Batal Suka</button>
+                @else    
+                  <input type="hidden" value="1" name="tipe">
+                  <button class="btn btn-danger"> <i class="fa fa-heart"></i> Sukai Foto</button>
+                @endif
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <br>
+      <div class="card">
         <form class="form-horizontal" action="{{ url('foto').'/'.@$data->id.'/komentar_post' }}" method="post" enctype="multipart/form-data">
           {{ csrf_field() }}
           <div class="card-body">
             <div class="form-group row">
               {{-- <label class="col-sm-3 text-end control-label col-form-label">Komentar Anda</label> --}}
-              <div class="col-sm-12">
-                <textarea class="form-control" placeholder="Komentar Anda ..." name="komentar" required="required"></textarea>
+              <div class="col-sm-10">
+                <textarea class="form-control" placeholder="Komentar Anda ..." name="komentar" rows="1" required="required"></textarea>
               </div>
-            </div>
-
-           
-          </div>
-          <div class="border-top">
-            <div class="card-body">
-              <button type="submit" class="btn btn-sm btn-primary">
-                Submit
-              </button>
-
-              <a href="{{ url()->previous() }}" class="btn btn-sm btn-warning">Batal</a>
+              <div class="col-sm-2">
+                <button type="submit" class="btn btn-sm btn-primary">
+                  Submit
+                </button>
+                <br>
+                
+              </div>
             </div>
           </div>
         </form>
