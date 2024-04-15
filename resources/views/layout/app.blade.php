@@ -80,6 +80,11 @@
                                 Album Saya
                             </a>
 
+                            <a class="nav-link {{ @$menu_aktif == 'profil_saya' ? 'active' : '' }}" href="{{ url('profil_saya') }}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                Profil Saya
+                            </a>
+
                             {{-- <a class="nav-link {{ @$menu_aktif == 'kategori_buku' ? 'active' : '' }}" href="{{ url('kategori_buku') }}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-bookmark"></i></div>
                                 Kategori Buku

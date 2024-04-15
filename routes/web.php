@@ -2,13 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PeminjamanController;
-use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AlbumController;
-use App\Http\Controllers\KoleksiPribadiController;
+use App\Http\Controllers\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,15 +37,8 @@ Route::post('foto/{id}/like_post', [FotoController::class, 'like_post']);
 
 Route::resource('foto', FotoController::class);
 
-Route::resource('user', UserController::class);
-
-Route::resource('peminjaman', PeminjamanController::class);
-
-Route::resource('laporan', LaporanController::class);
-Route::get('laporan_pdf', [LaporanController::class, 'pdf']);
-
 Route::resource('album', AlbumController::class);
 
-Route::resource('koleksi_pribadi', KoleksiPribadiController::class);
+Route::resource('profil_saya', ProfilController::class);
 
 });
