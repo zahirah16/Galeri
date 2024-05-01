@@ -11,7 +11,8 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         <script src="{{ asset('js/fa.js') }}" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-dark" style="background-image: url({{ url('bg-login.jpg')  }});height:100%;background-position: center; background-repeat: no-repeat;  background-size: cover;">
+    
+        <body style="background-image: linear-gradient(90deg, rgb(65, 65, 147), grey)">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>

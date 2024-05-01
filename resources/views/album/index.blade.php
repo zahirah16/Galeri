@@ -15,9 +15,9 @@
         <div class="card">
         <div class="card-body">
           <h5 class="card-title">Data Album</h5>
-          <a href="{{ url('album/create') }}" class="btn btn-primary">Tambah</a>
+          <a href="{{ url('album/create') }}" class="btn btn-primary margin-top: 50px">Tambah</a>
           <div class="table-responsive">
-              <table class="table table-sniped" id="data-tabel">
+              <table class="table table-sniped">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -34,10 +34,10 @@
                   @endphp
                     @foreach ($data as $d)
                       <tr>
-                        <td>{{ @$no++; }}</td>
-                        <td>{{ @$d->nama_album; }}</td>
-                        <td>{{ @$d->deskripsi; }}</td>
-                        <td>{{ tgl_indo_lengkap(@$d->tanggal_dibuat); }}</td>
+                        <td>{{ @$no++}}</td>
+                        <td>{{ @$d->nama_album }}</td>
+                        <td>{{ @$d->deskripsi }}</td>
+                        <td>{{ tgl_indo_lengkap(@$d->tanggal_dibuat) }}</td>
                         <td>
                           <a style="float: left;" href="{{ url('album').'/'.@$d->id.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
 

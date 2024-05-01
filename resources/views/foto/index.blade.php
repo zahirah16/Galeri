@@ -14,10 +14,10 @@
       @endif
         <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Data Foto / Galeri</h5>
+          <h5 class="card-title">Data Foto</h5>
           <a href="{{ url('foto/create') }}" class="btn btn-primary">Tambah</a>
           <div class="table-responsive">
-              <table class="table table-sniped" id="data-tabel">
+              <table class="table table-sniped" >
                 <thead>
                   <tr>
                     <th>No</th>
@@ -36,22 +36,22 @@
                   @endphp
                     @foreach ($data as $d)
                       <tr>
-                        <td>{{ @$no++; }}</td>
+                        <td>{{ @$no++ }}</td>
                         <td>
                           @if (@$d->lokasi_file!=null)
                               <img width="100px" src="{{ url($d->lokasi_file) }}" alt="">
                           @endif
                         </td>
-                        <td>{{ @$d->judul_foto; }}</td>
-                        <td>{{ @$d->deskripsi_foto; }}</td>
-                        <td>{{ tgl_indo_lengkap(@$d->tanggal_unggah); }}</td>
+                        <td>{{ @$d->judul_foto }}</td>
+                        <td>{{ @$d->deskripsi_foto }}</td>
+                        <td>{{ tgl_indo_lengkap(@$d->tanggal_unggah) }}</td>
                         <td>{{ @$d->album->nama_album }}</td>
                         <td>
                           <a style="float: left; " href="{{ url('foto_detail').'/'.@$d->id.'/detail' }}" class="btn btn-info btn-sm">Detail</a>
 
                           <a style="float: left; margin-left: 4px" href="{{ url('foto').'/'.@$d->id.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
 
-                          <form id="theForm_{{ @$d->id }}" style="float: left; margin-left: 4px" method="POST" action="{{ url('/foto').'/'.$d->id }}">
+                          <form id="theForm_{{ @$d->id }}" style="float: left; margin-left: 4px; " method="POST" action="{{ url('/foto').'/'.$d->id }}">
                                   {{ csrf_field() }}
                                   {{ method_field('DELETE') }}
 

@@ -35,11 +35,11 @@
                   @endphp
                     @foreach ($data as $d)
                       <tr>
-                        <td>{{ @$no++; }}</td>
-                        <td>{{ @$d->NamaLengkap; }}</td>
-                        <td>{{ @$d->Username; }}</td>
-                        <td>{{ @$d->Level; }}</td>
-                        <td>{{ @$d->Alamat; }}</td>
+                        <td>{{ @$no++ }}</td>
+                        <td>{{ @$d->NamaLengkap }}</td>
+                        <td>{{ @$d->Username }}</td>
+                        <td>{{ @$d->Level }}</td>
+                        <td>{{ @$d->Alamat }}</td>
                         <td>
                           <a style="float: left;" href="{{ url('user').'/'.@$d->UserID.'/edit' }}" class="btn btn-warning btn-sm">Edit</a>
                           

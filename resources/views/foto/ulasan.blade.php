@@ -6,8 +6,9 @@
       <div class="card">
         
           <div class="card-body">
+            <a style="margin-top: 4px" href="{{ url('/home') }}" class="btn btn-sm btn-warning"> <i class="fa fa-backward"></i> Kembali</a>  
+              
             <center>
-              <a style="margin-top: 4px" href="{{ url('/home') }}" class="btn btn-sm btn-warning"> <i class="fa fa-backward"></i> Kembali</a>  
               <h5>{{ @$data->judul_foto }}</h5>
             </center>
             <img width="100%" src="{{ url(@$data->lokasi_file) }}" alt="">
